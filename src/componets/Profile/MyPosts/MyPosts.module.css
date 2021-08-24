@@ -1,0 +1,31 @@
+.myposts_container {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   margin: 30px 0 0 50px;
+   gap: 20px;
+}
+
+.my_posts_input {
+   position: relative;
+   width: 50vw;
+   padding: 8px;
+   border-radius: 20px;
+   outline: none;
+   font-size: 25px;
+}
+
+.my_posts_btn {
+   position: relative;
+   padding: 8px;
+   border-radius: 20px;
+   outline: none;
+   font-size: 25px;
+   background-color: transparent;
+}
+
+.myposts_cards {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}

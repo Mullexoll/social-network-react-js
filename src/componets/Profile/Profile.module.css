@@ -1,0 +1,13 @@
+.profile {
+   display: flex;
+   flex-direction: column;
+   width: 85vw;
+   padding-left: 20px;
+}
+
+.avaDesc {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+}

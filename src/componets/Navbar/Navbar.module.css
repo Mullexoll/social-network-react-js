@@ -1,0 +1,27 @@
+.navbar {
+   display: flex;
+   flex-direction: column;
+   width: 15vw;
+   height: 87vh;
+   gap: 10px;
+   padding-left: 20px;
+   border-right: 6px solid white;
+}
+
+.navbar div {
+   position: relative;
+   font-size: 25px;
+   height: 30px;
+   width: 90%;
+   left: 10px;
+   color: black;
+}
+
+.navbar a {
+   text-decoration: none;
+}
+
+.activeLink {
+   color: rgb(101, 52, 255);
+   border-radius: 10px;
+}

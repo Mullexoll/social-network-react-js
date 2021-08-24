@@ -1,0 +1,14 @@
+.dialogs {
+   display: flex;
+   flex-direction: row;
+   width: 50%;
+   gap: 30px;
+}
+
+.dialogs_items {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   width: 50%;
+   gap: 10px;
+}

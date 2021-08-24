@@ -1,0 +1,21 @@
+.edit {
+   display: flex;
+   flex-direction: column;
+   width: 30%;
+   height: auto;
+   border: 1px solid rosybrown;
+   border-radius: 10px;
+   padding: 1%;
+   gap: 7px;
+}
+
+.edit div {
+   border-radius: 10px;
+   border: 2px solid violet;
+   padding: 8px;
+   font-size: 16px;
+}
+
+.edit div:hover {
+   border: 2px solid blue;
+}

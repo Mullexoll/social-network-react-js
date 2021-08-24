@@ -1,0 +1,9 @@
+.main_avatar {
+   margin: -150px 0 0 50px;
+   z-index: 100;
+   width: 30%;
+   height: auto;
+   border: 3px solid white;
+   border-radius: 21px 21px 21px 21px;
+   object-fit: cover;
+}

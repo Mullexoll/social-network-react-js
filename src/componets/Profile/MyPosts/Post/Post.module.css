@@ -1,0 +1,18 @@
+.post_card {
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   border: 1px solid blue;
+   border-radius: 20px;
+   height: auto;
+}
+
+.av_img {
+   padding: 20px;
+   position: relative;
+}
+
+.msg {
+   font-size: 24px;
+   padding: 20px;
+}
