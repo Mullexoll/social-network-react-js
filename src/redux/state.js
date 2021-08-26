@@ -59,22 +59,23 @@ let store = {
    callSubscriber() {
       console.log("State changed");
    },
-   addPost() {
-      let newPost = {
-         id: 5,
-         message: this._state.profilePage.newPostText,
-      };
-
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = "";
-      this.callSubscriber(this._state);
-   },
-   updateNewPostText(newText) {
-      this._state.profilePage.newPostText = newText;
-      this.callSubscriber(this._state);
-   },
    subscribe(observer) {
       this.callSubscriber = observer;
+   },
+
+   dispatch(action) {
+      if (action.type === "ADD-POST") {
+         let newPost = {
+            id: 5,
+            message: this._state.profilePage.newPostText,
+         };
+         this._state.profilePage.posts.push(newPost);
+         this._state.profilePage.newPostText = "";
+         this.callSubscriber(this._state);
+      } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+         this._state.profilePage.newPostText = action.newText;
+         this.callSubscriber(this._state);
+      }
    },
 };
 
