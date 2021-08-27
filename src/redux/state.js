@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
+const SEND_MESSAGE = "SEND-MESSAGE";
 
 let store = {
    _state: {
@@ -54,6 +56,14 @@ let store = {
                name: "Диана",
             },
          ],
+         messages: [
+            { id: 1, message: "Сегодня облачно" },
+            { id: 2, message: "Сегодня пасмурно" },
+            { id: 3, message: "Завтра солнечно" },
+            { id: 4, message: "Сегодня дождь" },
+            { id: 5, message: "Сегодня ясно" },
+         ],
+         newMessageBody: "",
       },
    },
 
@@ -81,6 +91,17 @@ let store = {
       } else if (action.type === "UPDATE-NEW-POST-TEXT") {
          this._state.profilePage.newPostText = action.newText;
          this.callSubscriber(this._state);
+      } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
+         this._state.dialogsPage.newMessageBody = action.body;
+         this.callSubscriber(this._state);
+      } else if (action.type === "SEND-MESSAGE") {
+         let body = {
+            id: 6,
+            message: this._state.dialogsPage.newMessageBody,
+         };
+         this._state.dialogsPage.newMessageBody = "";
+         this._state.dialogsPage.messages.push(body);
+         this.callSubscriber(this._state);
       }
    },
 };
@@ -95,6 +116,19 @@ export const updateNewPostTextActionCreator = (text) => {
    return {
       type: UPDATE_NEW_POST_TEXT,
       newText: text,
+   };
+};
+
+export const updateNewMessageBodyCreator = (body) => {
+   return {
+      type: UPDATE_NEW_MESSAGE_BODY,
+      body: body,
+   };
+};
+
+export const sendMessageCreator = () => {
+   return {
+      type: SEND_MESSAGE,
    };
 };
 

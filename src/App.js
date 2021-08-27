@@ -6,7 +6,7 @@ import Navbar from "./componets/Navbar/Navbar";
 import Profile from "./componets/Profile/Profile";
 
 function App(props) {
-   console.log(props.state.profilePage);
+   console.log(props.state.dialogsPage.messages);
    return (
       <BrowserRouter>
          <div className={app.App}>
@@ -24,9 +24,7 @@ function App(props) {
                ></Route>
                <Route
                   path="/dialogs"
-                  render={() => (
-                     <Dialogs users={props.state.dialogsPage.users} />
-                  )}
+                  render={() => <Dialogs store={props.store} />}
                ></Route>
             </div>
          </div>
