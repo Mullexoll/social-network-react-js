@@ -1,12 +1,12 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import app from "./App.module.css";
-import Dialogs from "./componets/Dialogs/Dialogs";
+import DialogsContainer from "./componets/Dialogs/DialogsContainer";
+import Users from "./componets/Users/Users";
 import Header from "./componets/Header/Header";
 import Navbar from "./componets/Navbar/Navbar";
 import Profile from "./componets/Profile/Profile";
 
 function App(props) {
-   console.log(props.state.dialogsPage.messages);
    return (
       <BrowserRouter>
          <div className={app.App}>
@@ -15,17 +15,13 @@ function App(props) {
                <Navbar />
                <Route
                   path="/profile"
-                  render={() => (
-                     <Profile
-                        profilePage={props.state.profilePage}
-                        dispatch={props.dispatch}
-                     />
-                  )}
+                  render={() => <Profile store={props.store} />}
                ></Route>
                <Route
                   path="/dialogs"
-                  render={() => <Dialogs store={props.store} />}
+                  render={() => <DialogsContainer store={props.store} />}
                ></Route>
+               <Route path="/users" render={() => <Users />}></Route>
             </div>
          </div>
       </BrowserRouter>

@@ -2,7 +2,7 @@ import BG from "./BG-image/BG";
 import Description from "./Description/Description";
 import Edit from "./Edit-description/Edit";
 import MainAvatar from "./MainAvatar/MainAvatar";
-import MyPosts from "./MyPosts/MyPosts";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import prf from "./Profile.module.css";
 
 const Profile = (props) => {
@@ -13,11 +13,7 @@ const Profile = (props) => {
             <MainAvatar />
             <Description />
             <Edit />
-            <MyPosts
-               posts={props.profilePage.posts}
-               newPostText={props.profilePage.newPostText}
-               dispatch={props.dispatch}
-            />
+            <MyPostsContainer store={props.store} />
          </div>
       </div>
    );

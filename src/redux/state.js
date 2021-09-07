@@ -1,7 +1,5 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
-const SEND_MESSAGE = "SEND-MESSAGE";
+import dialogReducer from "./reducers/dialog-reducer";
+import profileReducer from "./reducers/profile-reducer";
 
 let store = {
    _state: {
@@ -80,56 +78,11 @@ let store = {
    },
 
    dispatch(action) {
-      if (action.type === "ADD-POST") {
-         let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-         };
-         this._state.profilePage.posts.push(newPost);
-         this._state.profilePage.newPostText = "";
-         this.callSubscriber(this._state);
-      } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-         this._state.profilePage.newPostText = action.newText;
-         this.callSubscriber(this._state);
-      } else if (action.type === "UPDATE-NEW-MESSAGE-BODY") {
-         this._state.dialogsPage.newMessageBody = action.body;
-         this.callSubscriber(this._state);
-      } else if (action.type === "SEND-MESSAGE") {
-         let body = {
-            id: 6,
-            message: this._state.dialogsPage.newMessageBody,
-         };
-         this._state.dialogsPage.newMessageBody = "";
-         this._state.dialogsPage.messages.push(body);
-         this.callSubscriber(this._state);
-      }
+      this._state.profilePage = profileReducer(this._state.profilePage, action);
+      this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
+
+      this.callSubscriber(this._state);
    },
-};
-
-export const addPostActionCreator = () => {
-   return {
-      type: ADD_POST,
-   };
-};
-
-export const updateNewPostTextActionCreator = (text) => {
-   return {
-      type: UPDATE_NEW_POST_TEXT,
-      newText: text,
-   };
-};
-
-export const updateNewMessageBodyCreator = (body) => {
-   return {
-      type: UPDATE_NEW_MESSAGE_BODY,
-      body: body,
-   };
-};
-
-export const sendMessageCreator = () => {
-   return {
-      type: SEND_MESSAGE,
-   };
 };
 
 export default store;

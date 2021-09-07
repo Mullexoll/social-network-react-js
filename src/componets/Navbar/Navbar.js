@@ -14,6 +14,11 @@ const Navbar = () => {
                Сообщения
             </NavLink>
          </div>
+         <div>
+            <NavLink to="/users" activeClassName={nb.activeLink}>
+               Люди
+            </NavLink>
+         </div>
          <div>News</div>
          <div>Music</div>
          <div>Notification</div>

@@ -1,15 +1,11 @@
-import {
-   updateNewMessageBodyCreator,
-   sendMessageCreator,
-} from "../../redux/state";
 import dlg from "./Dialogs.module.css";
 import DialogsItems from "./DialogsItems/DialogsItems";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-   let state = props.store.getState().dialogsPage;
+   let state = props.dialogsPage;
 
-   let usersElement = state.users.map((users) => (
+   let usersElement = props.dialogsPage.users.map((users) => (
       <DialogsItems users={users.name} key={users.id} id={users.id} />
    ));
 
@@ -17,14 +13,14 @@ const Dialogs = (props) => {
       <Message message={m.message} />
    ));
 
-   let newMessageBody = state.newMessageBody;
+   let newMessageBody = props.newMessageBody;
 
    let onSendMessageClick = () => {
-      props.store.dispatch(sendMessageCreator());
+      props.onSendMessageClick();
    };
    let onNewMessageChange = (e) => {
       let body = e.target.value;
-      props.store.dispatch(updateNewMessageBodyCreator(body));
+      props.onNewMessageChange(body);
    };
 
    return (
