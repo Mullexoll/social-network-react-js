@@ -1,10 +1,10 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import app from "./App.module.css";
 import DialogsContainer from "./componets/Dialogs/DialogsContainer";
-import Users from "./componets/Users/Users";
 import Header from "./componets/Header/Header";
 import Navbar from "./componets/Navbar/Navbar";
 import Profile from "./componets/Profile/Profile";
+import UsersContainer from "./componets/Users/UsersContainer";
 
 function App(props) {
    return (
@@ -21,7 +21,7 @@ function App(props) {
                   path="/dialogs"
                   render={() => <DialogsContainer store={props.store} />}
                ></Route>
-               <Route path="/users" render={() => <Users />}></Route>
+               <Route path="/users" render={() => <UsersContainer />}></Route>
             </div>
          </div>
       </BrowserRouter>
