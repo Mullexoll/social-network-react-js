@@ -1,0 +1,48 @@
+.main_users_container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 10px;
+}
+
+.number_sheet:hover {
+   cursor: pointer;
+}
+
+.users_container {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 10px;
+}
+
+.users_desc {
+   display: flex;
+   width: 15%;
+   height: 55%;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid black;
+}
+
+.selectedPage {
+   font-size: 20px;
+   font-weight: bold;
+   color: black;
+}
+
+.users_name {
+   width: 100%;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   word-wrap: break-word;
+   word-break: break-all;
+   font-weight: bold;
+}
+
+.user_avatar {
+   height: 100px;
+   width: 100px;
+}
