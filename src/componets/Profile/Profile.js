@@ -10,8 +10,8 @@ const Profile = (props) => {
       <div className={prf.profile}>
          <BG />
          <div className={prf.avaDesc}>
-            <MainAvatar />
-            <Description />
+            <MainAvatar profile={props.profile} />
+            <Description profile={props.profile} />
             <Edit />
             <MyPostsContainer store={props.store} />
          </div>

@@ -3,7 +3,7 @@ import app from "./App.module.css";
 import DialogsContainer from "./componets/Dialogs/DialogsContainer";
 import Header from "./componets/Header/Header";
 import Navbar from "./componets/Navbar/Navbar";
-import Profile from "./componets/Profile/Profile";
+import ProfileContainer from "./componets/Profile/ProfileContainer";
 import UsersContainer from "./componets/Users/UsersContainer";
 
 function App(props) {
@@ -15,11 +15,11 @@ function App(props) {
                <Navbar />
                <Route
                   path="/profile"
-                  render={() => <Profile store={props.store} />}
+                  render={() => <ProfileContainer />}
                ></Route>
                <Route
                   path="/dialogs"
-                  render={() => <DialogsContainer store={props.store} />}
+                  render={() => <DialogsContainer />}
                ></Route>
                <Route path="/users" render={() => <UsersContainer />}></Route>
             </div>

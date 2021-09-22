@@ -1,6 +1,12 @@
+import Preloader from "../../common/Preloader/Preloader";
 import dsc from "./Description.module.css";
 
-const Description = () => {
+const Description = (props) => {
+   console.log(props);
+   if (!props.profile) {
+      return <Preloader />;
+   }
+
    return (
       <div className={dsc.description}>
          <h1>Oleksii Muliar</h1>
