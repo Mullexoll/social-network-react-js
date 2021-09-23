@@ -1,7 +1,8 @@
 import hdr from "./Header.module.css";
 import logo from "./../../images/logo.png";
+import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
    return (
       <div className={hdr.header}>
          <div className={hdr.img_logo}>
@@ -12,7 +13,13 @@ const Header = () => {
          </div>
          <div className={hdr.name}>Muliar Oleksii </div>
          <div>
-            <button className={hdr.exitBtn}>Выход</button>
+            {props.isAuth ? (
+               props.login
+            ) : (
+               <NavLink className={hdr.exitBtn} to={"/login"}>
+                  Вход
+               </NavLink>
+            )}
          </div>
       </div>
    );
