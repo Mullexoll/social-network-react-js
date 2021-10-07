@@ -1,9 +1,10 @@
 import React from "react";
 import style from "./Users.module.css";
-import user_avatar from "../../images/user_avatar.png";
+import userPhoto from "../../images/user_avatar.png";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 let Users = (props) => {
-   console.log(props);
    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
    let pages = [];
 
@@ -31,25 +32,70 @@ let Users = (props) => {
                <div className={style.users_desc} key={u.id}>
                   <div>
                      <div>
-                        <img
-                           className={style.user_avatar}
-                           src={user_avatar}
-                           alt="Avatar"
-                        ></img>
+                        <NavLink to={"/profile/" + u.id}>
+                           <img
+                              src={
+                                 u.photos.small != null
+                                    ? u.photos.small
+                                    : userPhoto
+                              }
+                              className={style.user_avatar}
+                              alt="UserPhoto"
+                           ></img>
+                        </NavLink>
                      </div>
                      <div>
                         {u.followed ? (
                            <button
+                              disabled={props.followingInProgress}
                               onClick={() => {
-                                 props.unfollow(u.id);
+                                 props.toggleFollowingProgress(true);
+                                 axios
+                                    .delete(
+                                       `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                                       {},
+                                       {
+                                          withCredentials: true,
+                                          headers: {
+                                             "API-KEY":
+                                                "d31889e6-cf2e-4846-9a8c-097cd380f4d7",
+                                          },
+                                       }
+                                    )
+                                    .then((response) => {
+                                       if (response.data.resultCode === 0) {
+                                          props.unfollow(u.id);
+                                       }
+                                       props.toggleFollowingProgress(false);
+                                    });
                               }}
                            >
                               Unfollow
                            </button>
                         ) : (
                            <button
+                              disabled={props.followingInProgress}
                               onClick={() => {
-                                 props.follow(u.id);
+                                 props.toggleFollowingProgress(true);
+
+                                 axios
+                                    .post(
+                                       `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                                       {},
+                                       {
+                                          withCredentials: true,
+                                          headers: {
+                                             "API-KEY":
+                                                "d31889e6-cf2e-4846-9a8c-097cd380f4d7",
+                                          },
+                                       }
+                                    )
+                                    .then((response) => {
+                                       if (response.data.resultCode === 0) {
+                                          props.follow(u.id);
+                                       }
+                                       props.toggleFollowingProgress(false);
+                                    });
                               }}
                            >
                               Follow
